@@ -1,0 +1,10 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.renderWhitespace": "all",
+  "workbench.iconTheme": "material-icon-theme",
+  "breadcrumbs.enabled": true,
+  "emmet.triggerExpansionOnTab": true,
+  "workbench.colorTheme": "FlatUI Dark",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+}
