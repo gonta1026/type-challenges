@@ -5,8 +5,8 @@ interface Todo {
   completed: boolean;
 }
 
-type SameType<T extends keyof any, U> = {
+type SameValues<T extends keyof any, U> = {
   [P in T]: U;
 };
 
-type OriginalKeysResultType = SameType<OriginalKeys, number>;
+type OriginalKeysResultType = SameValues<OriginalKeys, number>;

@@ -5,10 +5,20 @@
     completed: boolean;
   }
 
+  /***
+   *  pick, MyExcludeが内部で使われている
+   * */
+
   // pickを作成
   type MyPick<T, K extends keyof T> = {
     [P in K]: T[P];
   };
+
+  type PickMy<T, K extends keyof T> = {
+    [P in K]: T[P];
+  };
+
+  type customTodo = PickMy<Todo, "title" | "completed">;
 
   // Excludeを作成
   type MyExclude<T, K> = T extends K ? never : T;
