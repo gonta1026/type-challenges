@@ -21,8 +21,13 @@
     },
   };
 
-  type ObjType = typeof obj;
+  const fuga = {
+    foo: "aaa",
+    bar: {
+      aaga: "aaaa",
+    },
+  } as const;
 
-  // エラー: Cannot assign to 'hoge' because it is a constant or a read-only property.
-  obj.bar.hoge = 4;
+  type Fuga = DeepReadonly<typeof fuga>;
+  type ObjType = typeof obj;
 })();
