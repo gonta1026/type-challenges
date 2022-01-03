@@ -13,8 +13,8 @@ declare namespace Utilty {
   // keyofのvalueバージョン
   export type valueOf<T> = T[keyof T];
   // 指定したプロパティををオプショナルに変更する
-  export type PartiallyPartial<T, K extends keyof T> = Partial<Pick<T, K>> &
-    Pick<T, Exclude<keyof T, K>>;
+  // export type PartiallyPartial<T, K extends keyof T> = Partial<Pick<T, K>> &
+  //   Pick<T, Exclude<keyof T, K>>;
 
   // 例： type result = TargetPropertyNames<Part, Function> // "add"
   export type TargetPropertyNames<T, U> = {
@@ -22,4 +22,8 @@ declare namespace Utilty {
   }[keyof T];
   // 関数ならなんでもOK
   export type voidFunc = (...args: any[]) => any;
+
+  export type DeepReadonly<T> = {
+    readonly [P in keyof T]-?: DeepReadonly<T[P]>;
+  };
 }

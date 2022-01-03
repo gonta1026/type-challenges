@@ -3,17 +3,20 @@
    * 配列Tを受け取り、その最後の要素の型を返す汎用のLast <T>を実装します。
    **********************/
 
-  type arr1 = ["a", "b", "c"];
-  type arr2 = [3, 2, 1];
+  const arr1 = ["a", "b", "c"] as const;
+  const arr2 = [3, 2, 1] as const;
 
   /********** answer **********/
 
-  type Last<T extends string[] | number[]> = [never, ...T][T["length"]];
+  type Last<T extends readonly string[] | readonly number[]> = [
+    never,
+    ...T
+  ][T["length"]];
 
   /********** answer **********/
 
-  type tail1 = Last<arr1>; // expected to be 'c'
-  type tail2 = Last<arr2>; // expected to be 1
+  type tail1 = Last<typeof arr1>; // expected to be 'c'
+  type tail2 = Last<typeof arr2>; // expected to be 1
 
   /****************************/
 })();
