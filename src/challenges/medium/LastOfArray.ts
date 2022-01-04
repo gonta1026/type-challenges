@@ -8,31 +8,15 @@
 
   /********** answer **********/
 
-  type Last<T extends readonly string[] | readonly number[]> = [
-    never,
-    ...T
-  ][T["length"]];
+  type Last<
+    T extends readonly unknown[],
+    K extends readonly unknown[] = [0, ...T]
+  > = K[T["length"]];
 
-  /********** answer **********/
-
-  type tail1 = Last<typeof arr1>; // expected to be 'c'
-  type tail2 = Last<typeof arr2>; // expected to be 1
+  type tail3 = Last<typeof arr2>; // expected to be 1
 
   /****************************/
 })();
-
-type Split<
-  T extends string,
-  S extends string
-> = T extends `${infer P}${S}${infer R}`
-  ? string extends P
-    ? [P]
-    : [P, ...Split<R, S>]
-  : [T];
-
-function split<T extends string, S extends string>(value: T, separator: S) {
-  return value.split(separator) as Split<T, S>;
-}
 const phrase = "the cat sat on the mat" as const;
 const SplitPhrase = split(phrase, " ");
 const hgoehoeh = SplitPhrase.filter((text) => {

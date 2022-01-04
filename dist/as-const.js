@@ -8,5 +8,5 @@ const COLOR = {
 };
 const person = {
     name: "keisei",
-    age: 34
+    age: 34,
 };

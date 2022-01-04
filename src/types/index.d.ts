@@ -1,4 +1,4 @@
-declare namespace Utilty {
+declare namespace Util {
   // 指定をしたKeysで指定をしたユニオンをnullを合わせたユニオン型へする変更をさせる。
   export type TargetNullable<T, Keys extends keyof T> = {
     [P in keyof T]: Keys extends P ? T[P] | null : T[P];
@@ -27,3 +27,20 @@ declare namespace Utilty {
     readonly [P in keyof T]-?: DeepReadonly<T[P]>;
   };
 }
+
+type Split<
+  T extends string,
+  S extends string
+> = T extends `${infer P}${S}${infer R}`
+  ? string extends P
+    ? [P]
+    : [P, ...Split<R, S>]
+  : [T];
+
+function split<T extends string, S extends string>(value: T, separator: S) {
+  return value.split(separator) as Split<T, S>;
+}
+
+function PromiseAll<T extends any[]>(
+  values: readonly [...T]
+): Promise<{ [K in keyof T]: T[K] extends Promise<infer S> ? S : T[K] }>;

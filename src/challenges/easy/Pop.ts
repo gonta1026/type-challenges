@@ -10,7 +10,7 @@
   /********** answer **********/
 
   type Pop<T extends any[]> = T extends [...infer R, infer _] ? R : never;
-
+  type Hoge = arr1 extends [...infer R, infer _] ? R : never;
   /********** /answer **********/
 
   type re1 = Pop<arr1>; // expected to be ['a', 'b', 'c']
